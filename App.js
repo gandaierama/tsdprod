@@ -4,7 +4,6 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { TextInputMask } from "react-native-masked-text";
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 import OneSignal from "react-native-onesignal";
