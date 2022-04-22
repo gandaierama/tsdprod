@@ -7,6 +7,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 import OneSignal from "react-native-onesignal";
+import Constants from "expo-constants";
 import {
   Pressable,
   Vibration,
@@ -41,6 +42,10 @@ import {
   Switch
 } from "react-native-elements";
 
+import Speed from "./components/Speed";
+import HeaderHome from "./components/HeaderHome";
+import HeaderPages from "./components/HeaderPages";
+import HeaderDash from "./components/HeaderDash";
 
 const Stack = createNativeStackNavigator();
 const baseUrl = "http://api.tsdmotoboys.com.br/";

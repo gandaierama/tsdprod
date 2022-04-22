@@ -30,6 +30,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": ""
+    "description": "Components v.0.2",
+    "githubUrl": "https://github.com/gandaierama/tsdprod"
   }
 }
