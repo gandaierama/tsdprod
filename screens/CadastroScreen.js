@@ -31,56 +31,53 @@ import {
   Text,
   Switch
 } from "react-native-elements";
-import HeaderHome from "../components/HeaderHome";
+import HeaderPages from "../components/HeaderPages";
 
-import Speed from "../components/Speed";
 
-const HomeScreen = ({ navigation }) => {
+const CadastroScreen = ({ navigation }) => {
   return (
-    <>
-      <View>
-        <HeaderHome />
+    <View>
+      <HeaderPages title="Cadastro" />
+      <View
+        className={styles.view1}
+      >
         <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            height: "50%",
-          }}
+          className={styles.view2}
         >
-          <Button
-            title="Cadastrar"
-            onPress={() => navigation.navigate("Cadastro")}
-            buttonStyle={{
-              backgroundColor: "rgba(78, 116, 289, 1)",
-            }}
-            containerStyle={{
-              width: 200,
-              marginHorizontal: 50,
-              marginVertical: 30,
-            }}
-            type="solid"
-          />
+          <ScrollView>
+            <Button
+              title="Motoboy"
+              onPress={() => navigation.navigate("Motoboy")}
+              buttonStyle={{
+                backgroundColor: "rgba(78, 116, 289, 1)",
+              }}
+              containerStyle={{
+                width: 200,
+                marginHorizontal: 50,
+                marginVertical: 30,
+              }}
+              type="solid"
+            />
 
-          <Button
-            title="Login"
-            onPress={() => navigation.navigate("Login")}
-            buttonStyle={{
-              backgroundColor: "rgba(78, 116, 289, 1)",
-            }}
-            containerStyle={{
-              width: 200,
-              marginHorizontal: 50,
-              marginVertical: 30,
-            }}
-            type="solid"
-          />
-
-          
+            <Button
+              title="Cliente"
+              onPress={() => navigation.navigate("Cliente")}
+              buttonStyle={{
+                backgroundColor: "rgba(78, 116, 289, 1)",
+              }}
+              containerStyle={{
+                width: 200,
+                paddingHorizontal: 20,
+                marginHorizontal: 50,
+                marginVertical: 30,
+              }}
+              type="solid"
+            />
+          </ScrollView>
         </View>
       </View>
-      <Speed navigation={navigation} />
-    </>
+    </View>
   );
 };
 
-export default HomeScreen;
+export default CadastroScreen;
