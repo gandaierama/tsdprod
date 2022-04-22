@@ -53,12 +53,17 @@ return (
     onClose={() => setOpen(!open)}
   >
     <SpeedDial.Action
-      icon={{ name: 'add', color: '#fff' }}
+      icon={{ name: 'groups', color: '#fff' }}
+      title="Login"
+      onPress={() => navigation.navigate('Login')}
+    />
+    <SpeedDial.Action
+      icon={{ name: 'electric-moped', color: '#fff' }}
       title="Cadastrar Motoboy"
       onPress={() => navigation.navigate('Motoboy')}
     />
     <SpeedDial.Action
-      icon={{ name: 'add', color: '#fff' }}
+      icon={{ name: 'hail', color: '#fff' }}
       title="Cadastrar Cliente"
       onPress={() => navigation.navigate('Cliente')}
     />
