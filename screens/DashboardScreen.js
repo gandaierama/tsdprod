@@ -32,7 +32,7 @@ import HeaderPages from "../components/HeaderPages";
 const MotoboyScreen = ({ navigation }) => {
   return (
     <View>
-      <HeaderPages title="Cadastro de Motoboy" />
+      <HeaderPages title="Painel Motoboy" />
       <View
         className={styles.view1}
       >

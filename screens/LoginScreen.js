@@ -32,7 +32,7 @@ import HeaderPages from "../components/HeaderPages";
 const LoginScreen = ({ navigation }) => {
   return (
     <View>
-      <HeaderPages title="Cadastro" />
+      <HeaderPages title="Login" />
       <View
         className={styles.view1}
       >

@@ -37,7 +37,7 @@ import HeaderPages from "../components/HeaderPages";
 const CadastroScreen = ({ navigation }) => {
   return (
     <View>
-      <HeaderPages title="Cadastro" />
+      <HeaderPages title="Cliente" />
       <View
         className={styles.view1}
       >
