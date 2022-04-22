@@ -47,6 +47,9 @@ import HeaderHome from "./components/HeaderHome";
 import HeaderPages from "./components/HeaderPages";
 import HeaderDash from "./components/HeaderDash";
 import HomeScreen from "./screens/HomeScreen";
+import LoginScreen from "./screens/LoginScreen";
+import CadastroScreen from "./screens/CadastroScreen";
+import MotoboyScreen from "./screens/MotoboyScreen";
 const Stack = createNativeStackNavigator();
 const baseUrl = "http://api.tsdmotoboys.com.br/";
 
@@ -85,6 +88,9 @@ function App({ navigation }) {
       <Stack.Navigator screenOptions={{ headerShown: true }}>
         {/*Páginas públicas*/}
         <Stack.Screen name="Home" title="WELCOME" component={HomeScreen} />
+        <Stack.Screen name="Cadastro" title="CADASTRO" component={CadastroScreen} />
+        <Stack.Screen name="Login" title="Login" component={LoginScreen} />
+        <Stack.Screen name="Motoboy" title="MOTOBOY" component={MotoboyScreen} />
        
       </Stack.Navigator>
     </NavigationContainer>

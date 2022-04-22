@@ -2,13 +2,11 @@ import {
   Pressable,
   Vibration,
   ScrollView,
-  Image,
   PermissionsAndroid,
   Dimensions,
   SafeAreaView,
   Alert,
   TextInput,
-  ImageBackground,
   StyleSheet,
   View,
   AsyncStorage,
@@ -23,9 +21,6 @@ import {
   Input,
   Card,
   Dialog,
-  ListItem,
-  Header as HeaderRNE,
-  HeaderProps,
   Icon,
   Button,
   Text,
@@ -45,34 +40,7 @@ const LoginScreen = ({ navigation }) => {
           className={styles.view2}
         >
           <ScrollView>
-            <Button
-              title="Motoboy"
-              onPress={() => navigation.navigate("Motoboy")}
-              buttonStyle={{
-                backgroundColor: "rgba(78, 116, 289, 1)",
-              }}
-              containerStyle={{
-                width: 200,
-                marginHorizontal: 50,
-                marginVertical: 30,
-              }}
-              type="solid"
-            />
-
-            <Button
-              title="Cliente"
-              onPress={() => navigation.navigate("Cliente")}
-              buttonStyle={{
-                backgroundColor: "rgba(78, 116, 289, 1)",
-              }}
-              containerStyle={{
-                width: 200,
-                paddingHorizontal: 20,
-                marginHorizontal: 50,
-                marginVertical: 30,
-              }}
-              type="solid"
-            />
+            
           </ScrollView>
         </View>
       </View>
@@ -80,4 +48,20 @@ const LoginScreen = ({ navigation }) => {
   );
 };
 
+const styles = StyleSheet.create({
+  view1:{
+          justifyContent: "center",
+          alignItems: "center",
+          height: "auto",
+          minHeight: "100%",
+          paddingHorizontal: 20,
+        },
+  view2:{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            height: "auto",
+            marginTop: 20,
+          },
+});
 export default LoginScreen;
