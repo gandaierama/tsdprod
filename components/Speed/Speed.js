@@ -1,9 +1,49 @@
 
 import React, {useState, setState} from "react";
 import { SpeedDial } from 'react-native-elements';
-
+import {
+  Pressable,
+  Vibration,
+  ScrollView,
+  Image,
+  PermissionsAndroid,
+  Dimensions,
+  SafeAreaView,
+  Alert,
+  TextInput,
+  ImageBackground,
+  StyleSheet,
+  View,
+  AsyncStorage,
+  Animated,
+  AppState,
+  Share,
+  ToastAndroid
+} from "react-native";
 const Speed =({navigation}) => {
 const [open, setOpen] = React.useState(false);
+
+
+const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          'TSD Motoboys | O aplicativo para administrar suas entregas de delivery. Baixe Agora!!! tsdmotoboys.com.br',
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
 return (
   <SpeedDial
     isOpen={open}
@@ -22,7 +62,11 @@ return (
       title="Cadastrar Cliente"
       onPress={() => navigation.navigate('Cliente')}
     />
-
+    <SpeedDial.Action
+      icon={{ name: 'share', color: '#fff' }}
+      title="Compartilhar"
+      onPress={onShare}
+    />
   </SpeedDial>
 );
 };
