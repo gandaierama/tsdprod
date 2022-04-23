@@ -1,14 +1,19 @@
+import React, { useState, setState, useEffect, useRef } from "react";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
 import {
   Pressable,
   Vibration,
   ScrollView,
-  Image,
   PermissionsAndroid,
   Dimensions,
   SafeAreaView,
   Alert,
   TextInput,
-  ImageBackground,
   StyleSheet,
   View,
   AsyncStorage,
@@ -23,9 +28,6 @@ import {
   Input,
   Card,
   Dialog,
-  ListItem,
-  Header as HeaderRNE,
-  HeaderProps,
   Icon,
   Button,
   Text,
@@ -35,49 +37,166 @@ import HeaderPages from "../components/HeaderPages";
 
 
 const CadastroScreen = ({ navigation }) => {
+  
+  const [sucesso, setSucesso] = useState(false);
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [nome, setNome] = useState("");
+  const [cnpj, setCnpj] = useState("");
+  const [error, setError] = useState("");
+  
+  let text1="";
+  const url = `http://api.tsdmotoboys.com.br/cliente`;
+
+  async function submitCad(event) {
+    event.preventDefault();
+    Vibration.vibrate(2 * 1000);
+    console.log("foi");
+
+    console.log(nome);
+    const   senhaCrypto = MD5(senha);
+    const valCad = JSON.stringify({
+      name: nome,
+      email: email,
+      senha: senhaCrypto,
+      cnpj: cnpj,
+      endereco: '',
+      telefone: '',
+      latitude: '',
+      longitude: '',
+      bairro: '',
+      cidade: '',
+      estado: '',
+      numero: '',
+    });
+
+    try {
+      const requestOptions = {
+        method: "POST",
+        body: valCad,
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        }),
+      };
+      text1=requestOptions.json();
+      console.log(requestOptions);
+      const response = await fetch(url, requestOptions).then((response) =>
+        response.json()
+      );
+
+      setSucesso(true);
+      const res = response;
+
+      console.log(res);
+      return res;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <View>
-      <HeaderPages title="Cliente" />
-      <View
-        className={styles.view1}
-      >
+      <HeaderPages title="Cadastro de Cliente" />
+      <ScrollView>
         <View
-          className={styles.view2}
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            height: "70%",
+            paddingHorizontal: 20,
+          }}
         >
-          <ScrollView>
-            <Button
-              title="Motoboy"
-              onPress={() => navigation.navigate("Motoboy")}
-              buttonStyle={{
-                backgroundColor: "rgba(78, 116, 289, 1)",
-              }}
-              containerStyle={{
-                width: 200,
-                marginHorizontal: 50,
-                marginVertical: 30,
-              }}
-              type="solid"
-            />
+        <Text>{text1}</Text>
+          {sucesso === false && (
+            <>
+              <Input
+                onChangeText={setNome}
+                placeholder="Digite seu nome"
+                className={styles.input}
+                name="nome"
+                value={nome}
+                style={{ width: "100%", marginTop: 50 }}
+              />
 
-            <Button
-              title="Cliente"
-              onPress={() => navigation.navigate("Cliente")}
-              buttonStyle={{
-                backgroundColor: "rgba(78, 116, 289, 1)",
-              }}
-              containerStyle={{
-                width: 200,
-                paddingHorizontal: 20,
-                marginHorizontal: 50,
-                marginVertical: 30,
-              }}
-              type="solid"
-            />
-          </ScrollView>
+              <Input
+                onChangeText={setCnpj}
+                name="cnpj"
+                value={cnpj}
+                placeholder="Digite seu cnpj"
+                className={styles.input}
+              />
+
+              <Input
+                placeholder="Digite seu email"
+                name="email"
+                value={email}
+                onChangeText={setEmail}
+                className={styles.input}
+              />
+
+              <Input
+                placeholder="Digite sua senha"
+                name="senha"
+                value={senha}
+                onChangeText={setSenha}
+                className={styles.input}
+              />
+
+              <Button
+                title="Cadastrar"
+                onPress={submitCad}
+                buttonStyle={{
+                  backgroundColor: "rgba(78, 116, 289, 1)",
+                }}
+                containerStyle={{
+                  width: 200,
+                  marginHorizontal: 50,
+                  marginVertical: 30,
+                }}
+                type="solid"
+              />
+            </>
+          )}
+
+          {sucesso === true && (
+            <>
+              <Text>Cadastro efetuado com sucesso!!!</Text>
+              <Button
+                title="Login"
+                onPress={() => navigation.navigate("Login")}
+                buttonStyle={{
+                  backgroundColor: "rgba(78, 116, 289, 1)",
+                }}
+                containerStyle={{
+                  width: 200,
+                  marginHorizontal: 50,
+                  marginVertical: 30,
+                }}
+                type="solid"
+              />
+            </>
+          )}
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  view1:{
+          justifyContent: "center",
+          alignItems: "center",
+          height: "auto",
+          minHeight: "100%",
+          paddingHorizontal: 20,
+        },
+  view2:{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            height: "auto",
+            marginTop: 20,
+          },
+});
 export default CadastroScreen;
