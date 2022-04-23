@@ -45,34 +45,7 @@ const ClienteScreen = ({ navigation }) => {
           className={styles.view2}
         >
           <ScrollView>
-            <Button
-              title="Motoboy"
-              onPress={() => navigation.navigate("Motoboy")}
-              buttonStyle={{
-                backgroundColor: "rgba(78, 116, 289, 1)",
-              }}
-              containerStyle={{
-                width: 200,
-                marginHorizontal: 50,
-                marginVertical: 30,
-              }}
-              type="solid"
-            />
-
-            <Button
-              title="Cliente"
-              onPress={() => navigation.navigate("Cliente")}
-              buttonStyle={{
-                backgroundColor: "rgba(78, 116, 289, 1)",
-              }}
-              containerStyle={{
-                width: 200,
-                paddingHorizontal: 20,
-                marginHorizontal: 50,
-                marginVertical: 30,
-              }}
-              type="solid"
-            />
+           
           </ScrollView>
         </View>
       </View>
