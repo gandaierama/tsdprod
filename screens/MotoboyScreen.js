@@ -151,8 +151,6 @@ const MotoboyScreen = ({ navigation }) => {
 
           {sucesso === true && (
             <>
-
-              <LoadView/>
               <Text>Cadastro efetuado com sucesso!!!</Text>
               <Button
                 title="Login"

@@ -21,8 +21,7 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import CadastroScreen from "./screens/CadastroScreen";
 import MotoboyScreen from "./screens/MotoboyScreen";
-import DashboardScreen from "./screens/DashboardScreen";
-import DashboardClienteScreen from "./screens/DashboardClienteScreen";
+
 
 
 const Stack = createNativeStackNavigator();
