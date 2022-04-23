@@ -1,3 +1,10 @@
+import React, { useState, setState, useEffect, useRef } from "react";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
 import {
   Pressable,
   Vibration,
@@ -30,13 +37,15 @@ import HeaderPages from "../components/HeaderPages";
 
 
 const MotoboyScreen = ({ navigation }) => {
-   const [sucesso, setSucesso] = useState(false);
+  
+  const [sucesso, setSucesso] = useState(false);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
   const [error, setError] = useState("");
-
+  
+  let text1="";
   const url = `http://api.tsdmotoboys.com.br/motoboy`;
 
   async function submitCad(event) {
@@ -70,7 +79,7 @@ const MotoboyScreen = ({ navigation }) => {
           Accept: "application/json",
         }),
       };
-
+      text1=requestOptions.json();
       console.log(requestOptions);
       const response = await fetch(url, requestOptions).then((response) =>
         response.json()
@@ -98,6 +107,7 @@ const MotoboyScreen = ({ navigation }) => {
             paddingHorizontal: 20,
           }}
         >
+        <Text>{text1}</Text>
           {sucesso === false && (
             <>
               <Input
